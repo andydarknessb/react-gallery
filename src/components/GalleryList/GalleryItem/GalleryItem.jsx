@@ -10,29 +10,33 @@ function GalleryItem({ item }) {
     };
 
 // Updated the like count for the item on the server
-const handleLike = async () => {
+const addLike = async () => {
     try {
         await axios.put(`/gallery/like/${item.id}`);
         window.location.reload(); // Refreshes the page to update the like count
     } catch (error) {
-        console.error('Error updating like count:', error);
+        console.error('Error adding like:', error);
     }
 };
 
 return (
-    <div className="gallery-item">
+    <div className="gallery-item" onClick={toggleDescription}>
         {/* Conditionally renders the image or description */}
-        {showDescription ? (
-            <p onClick={toggleDescription}>{item.description}</p>
-        ) : (
-            <img src={item.path} alt={item.description} onClick={toggleDescription} />
+        {!showDescription && (
+            <img className="gallery-image" src={item.path} alt={item.description} />
         )}
-        <div className="likes-section">
-            <p>Likes: {item.likes}</p>
-            <button onClick={handleLike}>Like</button>
-         </div>
+        {showDescription && (
+            <div className="gallery-description">{item.description}</div>
+        )}
+        <div className="like-container">
+            <button className="like-button" onClick={addLike}>
+            Like
+            </button>
+            <span>{item.likes} likes</span>
         </div>
-      );
-    }
+    </div>
+ );
+}
 
+         
     export default GalleryItem;
