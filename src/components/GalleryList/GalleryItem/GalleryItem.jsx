@@ -19,6 +19,20 @@ const handleLike = async () => {
     }
 };
 
+return (
+    <div className="gallery-item">
+        {/* Conditionally renders the image or description */}
+        {showDescription ? (
+            <p onClick={toggleDescription}>{item.description}</p>
+        ) : (
+            <img src={item.path} alt={item.description} onClick={toggleDescription} />
+        )}
+        <div className="likes-section">
+            <p>Likes: {item.likes}</p>
+            <button onClick={handleLike}>Like</button>
+         </div>
+        </div>
+      );
+    }
 
-}
-}
+    export default GalleryItem;
