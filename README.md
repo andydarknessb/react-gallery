@@ -6,7 +6,7 @@ The gallery application displays a collection of images, allowing users to brows
 
 Screen Shot:
 
-![Screenshot of app deployed](images/screen_shot.png)
+![Screenshot of app deployed](public/images/screen_shot.png)
 
 Installation:
 
